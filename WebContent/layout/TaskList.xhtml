@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/TaskListTemplate.xhtml">
+
+	<ui:define name="content">
+
+		<p:dataTable value="#{TaskList.tasks}" var="item" paginator="true"
+			rows="6" id="taskList">
+			<p:column headerText="Id">
+				<h:form>
+					<h:commandLink action="#{TaskManagedBean.setSelectedTask(item)}"
+						value="#{item.taskId}" />
+				</h:form>
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{item.taskName}" />
+			</p:column>
+			<p:column headerText="Start Date">
+				<h:outputText value="#{item.startDate}" />
+			</p:column>
+			<p:column headerText="End Date">
+				<h:outputText value="#{item.endDate}" />
+			</p:column>
+			<p:column headerText="Next Timeout">
+				<h:outputText value="#{item.nextTimeout}" />
+			</p:column>
+			<p:column headerText="Description">
+				<h:outputText value="#{item.description}" />
+			</p:column>
+			<p:column headerText="Duration">
+				<h:outputText value="#{item.durationTime}" />
+			</p:column>
+			<p:column headerText="Progress">
+				<p:progressBar widgetVar="pbAjax" ajax="true"
+					value="#{item.progress}" labelTemplate="{value}%">
+				</p:progressBar>
+			</p:column>
+		</p:dataTable>
+
+		<br />
+
+		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<p:commandButton value="Create New Task" id="ajax"
+						action="#{TaskManagedBean.goToCreateNewTask}" styleClass="ui-priority-primary"
+						icon="ui-icon-disk" style="width:210px" />
+				</f:facet>
+				<f:facet name="right">
+					<p:commandButton value="Start observe progress bars" type="button"
+						onclick="PF('pbAjax').start();" />
+					<p:commandButton value="Refresh progress bars"
+						onclick="pbAjax.start();" icon="ui-icon-arrowrefresh-1-w" />
+				</f:facet>
+			</p:toolbar>
+
+		</h:form>
+
+		<br />
+
+	</ui:define>
+
+</ui:composition>
+

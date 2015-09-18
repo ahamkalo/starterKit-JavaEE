@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/CreateNewTaskTemplate.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<h2>
+						<p:outputLabel value="Create New Task" />
+					</h2>
+				</f:facet>
+			</p:toolbar>
+		</h:form>
+		<br />
+
+		<h:form>
+			<h:panelGrid columns="2" bgcolor="white">
+				<p:outputLabel value="Id:" />
+				<p:inputText id="taskId" value="#{TaskManagedBean.newTask.taskId}" />
+				<p:outputLabel value="Task Name:" />
+				<p:inputText id="taskName" value="#{TaskManagedBean.newTask.taskName}" />
+				<p:outputLabel value="Start Date:" />
+				<p:calendar id="startDate" value="#{TaskManagedBean.newTask.startDate}"
+					navigator="true" showOn="button" />
+				<p:outputLabel value="End Date:" />
+				<p:calendar id="endDate" value="#{TaskManagedBean.newTask.endDate}"
+					navigator="true" showOn="button" />
+				<p:outputLabel value="Duration in seconds:" />
+				<p:inputText id="duration" value="#{TaskManagedBean.newTask.durationTime}" />
+				<p:outputLabel value="Second:" />
+				<p:inputText id="second" value="#{TaskManagedBean.newTask.second}" />
+				<p:outputLabel value="Minute:" />
+				<p:inputText id="minute" value="#{TaskManagedBean.newTask.minute}" />
+				<p:outputLabel value="Hour:" />
+				<p:inputText id="hour" value="#{TaskManagedBean.newTask.hour}" />
+				<p:outputLabel value="Day of Month:" />
+				<p:inputText id="dayOfMonth" value="#{TaskManagedBean.newTask.dayOfMonth}" />
+				<p:outputLabel value="Month:" />
+				<p:inputText id="month" value="#{TaskManagedBean.newTask.month}" />
+				<p:outputLabel value="Year:" />
+				<p:inputText id="year" value="#{TaskManagedBean.newTask.year}" />
+				<p:outputLabel value="Day Of Week:" />
+				<p:inputText id="dayOfWeek" value="#{TaskManagedBean.newTask.dayOfWeek}" />
+				<p:outputLabel value="Task Description:" />
+				<p:inputTextarea cols="40" rows="4" id="description"
+					value="#{TaskManagedBean.newTask.description}" />
+			</h:panelGrid>
+			<br />
+
+			<p:toolbar>
+				<f:facet name="left">
+					<p:commandButton value="Back to Tasks List" id="ajax"
+						action="#{TaskManagedBean.goToHomePage}" styleClass="ui-priority-primary"
+						icon="ui-icon-extlink" style="width:210px" />
+				</f:facet>
+				<f:facet name="right">
+					<p:commandButton value="Create Task" id="ajax2"
+						action="#{TaskManagedBean.createTask}" styleClass="ui-priority-primary"
+						icon="ui-icon-disk" style="width:210px" />
+				</f:facet>
+			</p:toolbar>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
